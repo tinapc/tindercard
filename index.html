@@ -1,0 +1,210 @@
+
+<!doctype html>
+
+<html>
+
+  <head>
+    <title>Tindercardsjs demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <style>
+      
+      .tc-card-name{
+        font-weight:normal;
+      }
+      
+      #main{
+        position:relative;
+        width:320px;
+        height:480px;
+        left:50%;
+        margin-left:-160px;
+      }
+      #c1, #c2, #c3{display: none}
+    </style>
+    
+  </head>
+  
+  <body>
+      <div id="c1">
+        <div class="card radius">
+            <div class="card__image border-tlr-radius">
+              <img src="http://lorempixel.com/400/200/sports/" alt="image" class="border-tlr-radius">
+                  </div>
+
+            <div class="card__content card__padding">
+                      <div class="card__share">
+                          <div class="card__social">  
+                              <a class="share-icon facebook" href="#"><span class="fa fa-facebook"></span></a>
+                              <a class="share-icon twitter" href="#"><span class="fa fa-twitter"></span></a>
+                              <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
+                          </div>
+
+                          <a id="share" class="share-toggle share-icon" href="#"></a>
+                      </div>
+
+              <div class="card__meta">
+                <a href="#">Card 1</a>
+                          <time>17th March</time>
+              </div>
+
+              <article class="card__article">
+                <h2><a href="#">Material Design Card - For Blog Post Article</a></h2>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
+              </article>
+            </div>
+
+            <div class="card__action">
+              
+              <div class="card__author">
+                <img src="http://lorempixel.com/40/40/sports/" alt="user">
+                <div class="card__author-content">
+                  By <a href="#">John Doe</a>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <!--End card 1-->
+      <div id="c2">
+        <div class="card radius">
+            <div class="card__image border-tlr-radius">
+              <img src="http://lorempixel.com/400/200/sports/" alt="image" class="border-tlr-radius">
+                  </div>
+
+            <div class="card__content card__padding">
+                      <div class="card__share">
+                          <div class="card__social">  
+                              <a class="share-icon facebook" href="#"><span class="fa fa-facebook"></span></a>
+                              <a class="share-icon twitter" href="#"><span class="fa fa-twitter"></span></a>
+                              <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
+                          </div>
+
+                          <a id="share" class="share-toggle share-icon" href="#"></a>
+                      </div>
+
+              <div class="card__meta">
+                <a href="#">Card 2</a>
+                          <time>17th March</time>
+              </div>
+
+              <article class="card__article">
+                <h2><a href="#">Material Design Card - For Blog Post Article</a></h2>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
+              </article>
+            </div>
+
+            <div class="card__action">
+              
+              <div class="card__author">
+                <img src="http://lorempixel.com/40/40/sports/" alt="user">
+                <div class="card__author-content">
+                  By <a href="#">John Doe 2</a>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <!--End card 2-->
+      <div id="c3">
+        <div class="card radius">
+            <div class="card__image border-tlr-radius">
+              <img src="http://lorempixel.com/400/200/sports/" alt="image" class="border-tlr-radius">
+                  </div>
+
+            <div class="card__content card__padding">
+                      <div class="card__share">
+                          <div class="card__social">  
+                              <a class="share-icon facebook" href="#"><span class="fa fa-facebook"></span></a>
+                              <a class="share-icon twitter" href="#"><span class="fa fa-twitter"></span></a>
+                              <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
+                          </div>
+
+                          <a id="share" class="share-toggle share-icon" href="#"></a>
+                      </div>
+
+              <div class="card__meta">
+                <a href="#">Card 3</a>
+                          <time>17th March</time>
+              </div>
+
+              <article class="card__article">
+                <h2><a href="#">Material Design Card - For Blog Post Article</a></h2>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
+              </article>
+            </div>
+
+            <div class="card__action">
+              
+                <div class="card__author">
+                  <img src="http://lorempixel.com/40/40/sports/" alt="user">
+                  <div class="card__author-content">
+                    By <a href="#">John Doe 3</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <!--End card 3-->
+
+
+    <input id="prevCardId" type="hidden" />
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <a href="" class="pull-left"><i class="fa fa-home"></i></a>
+          <div class="progress">
+            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+            </div>
+          </div>
+          <a href="javascript:void(0)" class="pull-right"><i class="fa fa-mail-forward"></i></a>
+        </div>
+
+      </div>
+    </div>
+    <div id="main"></div>
+    
+    <div id="success">
+      <div class="icon"><i class="fa fa-check"></i></div>    
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="js/hammer.js"></script>
+    <script src="js/tindercard.js"></script>
+    
+    <script>
+
+      $(document).ready(function () {
+          $('.card__share > a').on('click', function(e){ 
+            e.preventDefault() // prevent default action - hash doesn't appear in url
+              $(this).parent().find( 'div' ).toggleClass( 'card__social--active' );
+            $(this).toggleClass('share-expanded');
+            });
+ 
+
+        // Define cards
+        var cards = [
+          new Tindercardsjs.card(3, $('#c3').html()),
+          new Tindercardsjs.card(2, $('#c2').html()),
+          new Tindercardsjs.card(1, $('#c1').html())
+        ];
+        
+        // Render cards
+        Tindercardsjs.render(cards, $('#main'), function (event) {
+          console.log('Swiped ' + event.direction + ', cardid is ' + event.cardid + ' and target is:');
+          console.log(event.card);
+        });
+
+      });
+    </script>
+    
+  </body>
+  
+</html>

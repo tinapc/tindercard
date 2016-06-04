@@ -21,7 +21,7 @@ Tindercardsjs = (function () {
 	   * @memberof module:Tindercardsjs
 	   * @class
 	*/
-  	exports.card = function (cardid, desc) {
+  	exports.card = function (cardid, desc, percent) {
     
     var jqo;
     
@@ -34,7 +34,10 @@ Tindercardsjs = (function () {
      */
     this.tojQuery = function () {
     	if (!jqo) {
-        	jqo = $('<div class="tc-card" id="card_' + cardid+ '">').attr('data-cardid', cardid).html(desc);
+        	jqo = $('<div class="tc-card" id="card_' + cardid+ '">')
+        			.attr('data-cardid', cardid)
+        			.attr('data-cardpercent', percent)
+        			.html(desc);
       	}
       	return jqo;
     };
@@ -56,8 +59,9 @@ Tindercardsjs = (function () {
 	    	var $card = $(this);
 	      	(new Hammer(this)).on("panleft panright panend panup pandown", function (ev) {
 	        	var transform,
-	          	yfactor = ev.deltaX >= 0 ? -1 : 1,
-	          	resultEvent = {};
+	          		yfactor = ev.deltaX >= 0 ? -1 : 1,
+	          		resultEvent = {},
+	          		percent = '';
 
 	          	var vardPrev = $('#prevCardId').val(),
 	        		$cardPrev = $('#card_' + vardPrev);
@@ -78,7 +82,11 @@ Tindercardsjs = (function () {
 			              	if (typeof onSwiped === 'function') {
 				                resultEvent.cardid = $card.attr('data-cardid');
 				                resultEvent.card = $card;
+				                percent = $card.attr('data-cardpercent');
 								
+				                //Set percent for card currently
+				                $('.progress-bar').css('width', percent + '%');
+
 				                var sizeOfCard = $('.tc-card').length;
 				                if(resultEvent.cardid == sizeOfCard) {
 				                	$('#main').hide();
@@ -108,7 +116,9 @@ Tindercardsjs = (function () {
 			              	});
 			            }, 300);
 	          		}
-
+	          	} else if (ev.type === 'panup' || ev.type === 'pandown') {
+		          	// No vertical scroll
+		          	ev.preventDefault();
 	        	} else {
 	          		deltaX = ev.deltaX;
 	          		transform = 'translate3d(' + deltaX + 'px, ' + (yfactor * 0.15 * deltaX) + 'px, 0)';
@@ -129,6 +139,10 @@ Tindercardsjs = (function () {
 
 			            resultEvent.cardid = $card.attr('data-cardid');
 		                resultEvent.card = $card;
+
+		                percent = $card.attr('data-cardpercent');
+		                //Set percent for card currently
+		                $('.progress-bar').css('width', percent + '%');
 
 		                var returnCardId = '';
 		                returnCardId = resultEvent.cardid - 2;
@@ -158,7 +172,9 @@ Tindercardsjs = (function () {
 			              '-webkit-transform': transform + ' rotate(' + ((-5 * deltaX) / 10) + 'deg)'
 			            });
 	          		}
-
+          		} else if (ev.type === 'panup' || ev.type === 'pandown') {
+		          	// No vertical scroll
+		          	ev.preventDefault();
 	        	} else {
 	          		deltaX = ev.deltaX;
 	          		transform = 'translate3d(' + deltaX + 'px, ' + (yfactor * 0.15 * deltaX) + 'px, 0)';

@@ -33,6 +33,7 @@ a {
 }
 	a:hover {
 		color: #2980b9;
+		text-decoration: none;
 	}
 
 h2 {
@@ -233,18 +234,34 @@ h2 {
     transition: all 0.2s ease-out;
 }
 
+#success .wrap{
+	position: relative;
+    width: 100px;
+    height: 100px;
+    top: 45%;
+    left: 45%;
+    transform: translate(-35%, -35%);
+    text-align: center;
+    line-height: 115px;
+}
+#success .wrap i{
+	font-size: 35px;
+    color: #fff;
+}
+
 #success .icon{
 	position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-35%, -35%);
+    top: 0;
+    left: 0;
     border: 4px solid #fff;
-    width: 100px;
+    width: 100%;
     font-size: 50px;
     border-radius: 100%;
-    height: 100px;
+    height: 100%;
     text-align: center;
     line-height: 100px;
+    -webkit-animation: pulse 2s linear infinite;
+    -moz-animation: pulse 2s linear infinite; 
 }
 
 .progress{
@@ -254,4 +271,22 @@ h2 {
     width: 80%;
     display: inline-block;
     margin-left: 10px;
+}
+
+@-webkit-keyframes pulse 
+{       
+	0% {-webkit-transform: scale(0); opacity: 0;}
+	8% {-webkit-transform: scale(0); opacity: 0;}
+	15% {-webkit-transform: scale(0.1); opacity: 1;}
+	30% {-webkit-transform: scale(0.5); opacity: 1;}
+	100% {opacity: 0; -webkit-transform: scale(1);}
+}
+
+@-moz-keyframes pulse 
+{       
+	0% {-moz-transform: scale(0); opacity: 0;}
+	8% {-moz-transform: scale(0); opacity: 0;}
+	15% {-moz-transform: scale(0.1); opacity: 1;}
+	30% {-moz-transform: scale(0.5); opacity: 1;}
+	100% {opacity: 0; -moz-transform: scale(1);}
 }

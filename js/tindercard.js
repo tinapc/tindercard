@@ -95,8 +95,9 @@ Tindercardsjs = (function () {
 				                if(resultEvent.cardid == sizeOfCard) {
 				                	$('#main').hide();
 				                	$('#success').css('visibility','visible');
-				                	$('#success .wrap').html('<img src="onoff2.gif" class="img-responsive">');
-				                	$('#top-bar').css('visibility:hidden');
+				                	$('#success .wrap .success-img').html('<img src="onoff2.gif" class="img-responsive">');
+				                	//$('#success .wrap').css('background-image', 'url(onoff2.gif)');
+				                	$('#top-bar').css('visibility','hidden');
 				                }
 
 				                // Assign this card id then we can prev it if need

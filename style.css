@@ -81,8 +81,8 @@ h2 {
 	margin-bottom: 1.6rem;
 	border-radius: 5px;
   	background: #fff;
-  	-webkit-box-shadow: 1px 3px 4px rgba(0,0,0,0.15);
-  	box-shadow: 1px 3px 4px rgba(0,0,0,0.15);
+  	-webkit-box-shadow: 1px 3px 4px rgba(0,0,0,0.09);
+  	box-shadow: 1px 3px 4px rgba(0,0,0,0.09);
 }
 
 .card__padding {
@@ -246,11 +246,18 @@ h2 {
     height: 100%;
     text-align: center;
     line-height: 115px;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 #success .wrap img{
 	display: block;
   	margin-left: auto;
   	margin-right: auto 
+}
+#success .wrap h3, #success .wrap h4{
+	color: #fff;
+	font-weight: 500;
+    letter-spacing: 2px;
 }
 
 /*#success .wrap i{
@@ -304,6 +311,53 @@ h2 {
 	30% {-moz-transform: scale(0.5); opacity: 1;}
 	100% {opacity: 0; -moz-transform: scale(1);}
 }
+
 .fa{
 	color:#fff;
+}
+
+.button {
+  display: inline-block;
+  position: relative;
+  width: 120px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 2px;
+  font-size: 0.9em;
+  background-color: #fff;
+  color: #66CCCC;
+}
+
+.button > paper-ripple {
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.button.narrow {
+  width: 60px;
+}
+
+.button.grey {
+  background-color: #eee;
+}
+
+.button.blue {
+  background-color: #4285f4;
+  color: #fff;
+}
+
+.button.green {
+  background-color: #0f9d58;
+  color: #fff;
+}
+
+.button.raised {
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0.2s;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.button.raised:active {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+  transition-delay: 0s;
 }

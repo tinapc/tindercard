@@ -89,17 +89,25 @@ h2 {
 
 @media only screen and (min-width: 768px) and (max-width: 991px){ ... }
 
-@media only screen and (min-width: 992px) and (max-width: 1999px){ ... }
+@media only screefile:///Users/gary-yauchan/Desktop/Drive/www/tindercard/index.html#n and (min-width: 992px) and (max-width: 1999px){ ... }
 
 @media only screen and (min-width: 480px){
 	#main{
-	position:relative;
-	width:375px;
-	height:480px;
-	left:50%;
-	margin-left:-195px;
-}
+		position:relative;
+		width:375px;
+		height:480px;
+		left:50%;
+		margin-left:-195px;
+	}
+	#success .wrap img{
+		max-width: 75%;
+	}
 
+}
+@media only screen and (min-width: 768px){
+	#success .wrap img{
+		max-width: 35%;
+	}
 }
 
 

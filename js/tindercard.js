@@ -146,13 +146,15 @@ Tindercardsjs = (function () {
 			            resultEvent.cardid = $card.attr('data-cardid');
 		                resultEvent.card = $card;
 
-		                percent = $cardPrev.attr('data-cardpercent');
-		                //Set percent for card currently
-		                $('.progress-bar').css('width', percent + '%');
-
 		                var returnCardId = '';
 		                returnCardId = resultEvent.cardid - 2;
-		                
+
+		                percent = $('#card_' + returnCardId).attr('data-cardpercent');
+		                if (returnCardId <=0) {
+		                	$('.progress-bar').css('width', '2%');
+		                } else {
+		                	$('.progress-bar').css('width', percent + '%');
+		                }
 		                // Assign this card id then we can prev it if need
 		                $('#prevCardId').val(returnCardId);
 

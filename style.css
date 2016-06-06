@@ -19,7 +19,7 @@ html {
 	font-size: 62.5%;
 }
 body {
-	background-color: #eee;
+	background-color: #66CCCC;
 	font-family: Roboto;
 	font-weight: 400;
 	font-size: 1.6em;
@@ -79,6 +79,10 @@ h2 {
 .card {
 	background-color: #fff;
 	margin-bottom: 1.6rem;
+	border-radius: 5px;
+  	background: #fff;
+  	-webkit-box-shadow: 1px 3px 4px rgba(0,0,0,0.15);
+  	box-shadow: 1px 3px 4px rgba(0,0,0,0.15);
 }
 
 .card__padding {
@@ -244,8 +248,9 @@ h2 {
     line-height: 115px;
 }
 #success .wrap img{
-	position: absolute;
-    top: 20%;
+	display: block;
+  	margin-left: auto;
+  	margin-right: auto 
 }
 
 /*#success .wrap i{
@@ -275,6 +280,11 @@ h2 {
     width: 80%;
     display: inline-block;
     margin-left: 10px;
+    background-color: #448686;
+}
+
+.progress-bar-danger{
+	background-color: #fff;
 }
 
 @-webkit-keyframes pulse 
@@ -293,4 +303,7 @@ h2 {
 	15% {-moz-transform: scale(0.1); opacity: 1;}
 	30% {-moz-transform: scale(0.5); opacity: 1;}
 	100% {opacity: 0; -moz-transform: scale(1);}
+}
+.fa{
+	color:#fff;
 }

@@ -96,6 +96,7 @@ Tindercardsjs = (function () {
 				                	$('#main').hide();
 				                	$('#success').css('visibility','visible');
 				                	$('#success .wrap').html('<img src="onoff2.gif" class="img-responsive">');
+				                	$('#top-bar').css('visibility:hidden');
 				                }
 
 				                // Assign this card id then we can prev it if need

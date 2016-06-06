@@ -52,12 +52,16 @@ Tindercardsjs = (function () {
    */
   	function initSwipe(onSwiped) {
     	var $topcard = $('.tc-card'),
-      		deltaX = 0;
+      		deltaX = 0,
+      		deltaY = 0;
 
 	    $topcard.each(function () {
 
 	    	var $card = $(this);
-	      	(new Hammer(this)).on("panleft panright panend panup pandown", function (ev) {
+	    	var mc = new Hammer((this));
+	    		mc.get('pan').set({direction: Hammer.DIRECTION_ALL})
+
+	      	mc.on("panleft panright panend panup pandown", function (ev) {
 	        	var transform,
 	          		yfactor = ev.deltaX >= 0 ? -1 : 1,
 	          		resultEvent = {},
@@ -90,7 +94,8 @@ Tindercardsjs = (function () {
 				                var sizeOfCard = $('.tc-card').length;
 				                if(resultEvent.cardid == sizeOfCard) {
 				                	$('#main').hide();
-				                	$('#success').show();
+				                	$('#success').css('visibility','visible');
+				                	$('#success .wrap').html('<img src="onoff2.gif" class="img-responsive">');
 				                }
 
 				                // Assign this card id then we can prev it if need
@@ -117,8 +122,8 @@ Tindercardsjs = (function () {
 			            }, 300);
 	          		}
 	          	} else if (ev.type === 'panup' || ev.type === 'pandown') {
-		          	// No vertical scroll
-		          	ev.preventDefault();
+		          // No vertical scroll
+		          ev.preventDefault();
 	        	} else {
 	          		deltaX = ev.deltaX;
 	          		transform = 'translate3d(' + deltaX + 'px, ' + (yfactor * 0.15 * deltaX) + 'px, 0)';
@@ -140,7 +145,7 @@ Tindercardsjs = (function () {
 			            resultEvent.cardid = $card.attr('data-cardid');
 		                resultEvent.card = $card;
 
-		                percent = $card.attr('data-cardpercent');
+		                percent = $cardPrev.attr('data-cardpercent');
 		                //Set percent for card currently
 		                $('.progress-bar').css('width', percent + '%');
 
@@ -172,9 +177,9 @@ Tindercardsjs = (function () {
 			              '-webkit-transform': transform + ' rotate(' + ((-5 * deltaX) / 10) + 'deg)'
 			            });
 	          		}
-          		} else if (ev.type === 'panup' || ev.type === 'pandown') {
-		          	// No vertical scroll
-		          	ev.preventDefault();
+	          	} else if (ev.type === 'panup' || ev.type === 'pandown') {
+		          // No vertical scroll
+		          ev.preventDefault();
 	        	} else {
 	          		deltaX = ev.deltaX;
 	          		transform = 'translate3d(' + deltaX + 'px, ' + (yfactor * 0.15 * deltaX) + 'px, 0)';
@@ -182,6 +187,59 @@ Tindercardsjs = (function () {
 			            '-webkit-transform': transform + ' rotate(' + ((-1 * deltaX) / 10) + 'deg)'
 			        });
 	        	}
+
+	        	// Pan Down
+	        	/*if(ev.type === 'panend') {
+
+	        		if(ev.center.y > 100){
+		        		transform = 'translate3d(0px,' + ev.center.y + 'px, 0)';
+			            $card.css({
+			              'transition': '-webkit-transform 0.5s',
+			              '-webkit-transform': transform + ' rotate(0deg)'
+			            });
+		        		setTimeout(function () {
+			              	$card.css({
+			                	'display': 'none'
+			              	});
+
+			              	if (typeof onSwiped === 'function') {
+				                resultEvent.cardid = $card.attr('data-cardid');
+				                resultEvent.card = $card;
+				                percent = $card.attr('data-cardpercent');
+								
+				                //Set percent for card currently
+				                $('.progress-bar').css('width', percent + '%');
+
+				                var sizeOfCard = $('.tc-card').length;
+				                if(resultEvent.cardid == sizeOfCard) {
+				                	$('#main').hide();
+				                	$('#success').show();
+				                }
+
+				                // Assign this card id then we can prev it if need
+				                $('#prevCardId').val(resultEvent.cardid);
+				                if (deltaY > 50) {
+				                	resultEvent.direction = 'down';
+				                } else {
+				                  	resultEvent.direction = 'undefined';
+				                }
+			                	onSwiped(resultEvent);
+			              	}
+			            }, 500);
+			        } else {
+			        	transform = 'translate3d(0px,0px, 0)';
+			            $card.css({
+			              'transition': '-webkit-transform 0.5s',
+			              '-webkit-transform': transform + ' rotate(0deg)'
+			            });
+			        }
+	        	} else {
+	        		transform = 'translate3d(0px,0px, 0)';
+		            $card.css({
+		              'transition': '-webkit-transform 0.5s',
+		              '-webkit-transform': transform + ' rotate(0deg)'
+		            });
+	        	}*/
 
 	      	});
 	    });

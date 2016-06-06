@@ -2,28 +2,36 @@ var app = [];
 
 app = {
 	disablePulltoRefresh: function(){
-		// Disable Pull to refresh
+		window.addEventListener('load', function() {
+
+        var maybePreventPullToRefresh = false;
         var lastTouchY = 0;
-        var preventPullToRefresh = false;
+        var touchstartHandler = function(e) {
+          if (e.touches.length != 1) return;
+          lastTouchY = e.touches[0].clientY;
+          // Pull-to-refresh will only trigger if the scroll begins when the
+          // document's Y offset is zero.
+          maybePreventPullToRefresh = true && window.pageYOffset == 0;
+        }
 
-        $('body').on('touchstart', function (e) {
-            if (e.originalEvent.touches.length != 1) { return; }
-            lastTouchY = e.originalEvent.touches[0].clientY;
-            preventPullToRefresh = window.pageYOffset == 0;
-        });
+        var touchmoveHandler = function(e) {
+          var touchY = e.touches[0].clientY;
+          var touchYDelta = touchY - lastTouchY;
+          lastTouchY = touchY;
 
-        $('body').on('touchmove', function (e) {
-            var touchY = e.originalEvent.touches[0].clientY;
-            var touchYDelta = touchY - lastTouchY;
-            lastTouchY = touchY;
-            if (preventPullToRefresh) {
-                // To suppress pull-to-refresh it is sufficient to preventDefault the first overscrolling touchmove.
-                preventPullToRefresh = false;
-                if (touchYDelta > 0) {
-                    e.preventDefault();
-                    return;
-                }
+          if (maybePreventPullToRefresh) {
+            // To suppress pull-to-refresh it is sufficient to preventDefault the
+            // first overscrolling touchmove.
+            maybePreventPullToRefresh = false;
+            if (touchYDelta > 0) {
+              e.preventDefault();
+              return;
             }
-        });
+          }
+        }
+
+        document.addEventListener('touchstart', touchstartHandler, false);
+        document.addEventListener('touchmove', touchmoveHandler, false);
+      });
 	}
 }

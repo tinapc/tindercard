@@ -13,24 +13,24 @@
     <meta name="twitter:description" content="Think of your marketing message like a punchline. You want to build the story over time so that the final message will stand out.">
     <meta name="twitter:creator" content="@yourprimer">
     <!-- Twitter Summary card images must be at least 120x120px -->
-    <meta name="twitter:image" content="https://services.google.com/fh/files/misc/treatment_lunch.jpg">
+    <meta name="twitter:image" content="http://theproducthackers.com/primer/safe_image.jpg">
 
     <!-- Open Graph data -->
     <meta property="og:title" content="Primer - How a Punchline Can Send a Strong Message" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://www.yourprimer.com/" />
-    <meta property="og:image" content="https://services.google.com/fh/files/misc/treatment_lunch.jpg" />
+    <meta property="og:url" content="www.theproducthackers.com/primer/" />
+    <meta property="og:image" content="http://theproducthackers.com/primer/safe_image.jpg" />
     <meta property="og:description" content="Primer - How a Punchline Can Send a Strong Message" />
     <meta property="og:site_name" content="Primer" />
 
-    <link rel="shortcut icon" type="image/x-icon" href="favicon_32retina.gif">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"> -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <style>
         .tc-card-name {
             font-weight: normal;
@@ -94,6 +94,17 @@
                 </article>
             </div>
 
+            <div class="card__bottom">
+                <div class="card__action">
+
+                    <div class="card__author">
+                        <div class="card__author-content pull-right">
+                            <span class="fa fa-thumb-tack "></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <!--End card 2-->
@@ -139,8 +150,19 @@
             <div class="card__content card__padding">
 
                 <article class="card__article">
-                    <p>Whether you're launching a campaign or doing a presentation, using humor helps you connect with your audience. That's because laughter lowers people's defenses and makes them ore open to new ideas and points of view.</p>
+                    <p>Let's see how Hotels.com used humor to differentiate themselves from their competitors.</p>
                 </article>
+            </div>
+
+            <div class="card__bottom">
+                <div class="card__action">
+
+                    <div class="card__author">
+                        <div class="card__author-content pull-right">
+                            <span class="fa fa-thumb-tack "></span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -225,6 +247,67 @@
 
     <!-- Go to www.addthis.com/dashboard to customize your tools, and paste the code right before the </body> tag in the HTML of your website. -->
     <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-574c49c5f8002c35"></script>
+
+
+    <div class="hidden" style="display:none">
+        <input id="preventPullToRefresh" type="checkbox" checked>Prevent pull-to-refresh?</input>
+        <br>
+        <input id="preventOverscrollGlow" type="checkbox" checked>Prevent overscroll glow?</input>
+        <br>
+        <input id="preventScroll" type="checkbox" checked>Prevent scroll?</input>
+        <div style="height:4000px"/>
+        <br>
+    </div>
+    <script>
+    window.addEventListener('load', function() {
+      var preventPullToRefreshCheckbox = document.getElementById('preventPullToRefresh');
+      var preventOverscrollGlowCheckbox = document.getElementById("preventOverscrollGlow");
+      var preventScrollCheckbox = document.getElementById("preventScroll");
+
+      var maybePreventPullToRefresh = false;
+      var lastTouchY = 0;
+      var touchstartHandler = function(e) {
+        if (e.touches.length != 1) return;
+        lastTouchY = e.touches[0].clientY;
+        // Pull-to-refresh will only trigger if the scroll begins when the
+        // document's Y offset is zero.
+        maybePreventPullToRefresh =
+            preventPullToRefreshCheckbox.checked &&
+            window.pageYOffset == 0;
+      }
+
+      var touchmoveHandler = function(e) {
+        var touchY = e.touches[0].clientY;
+        var touchYDelta = touchY - lastTouchY;
+        lastTouchY = touchY;
+
+        if (maybePreventPullToRefresh) {
+          // To suppress pull-to-refresh it is sufficient to preventDefault the
+          // first overscrolling touchmove.
+          maybePreventPullToRefresh = false;
+          if (touchYDelta > 0) {
+            e.preventDefault();
+            return;
+          }
+        }
+
+        if (preventScrollCheckbox.checked) {
+          e.preventDefault();
+          return;
+        }
+
+        if (preventOverscrollGlowCheckbox.checked) {
+          if (window.pageYOffset == 0 && touchYDelta > 0) {
+            e.preventDefault();
+            return;
+          }
+        }
+      }
+
+      document.addEventListener('touchstart', touchstartHandler, false);
+      document.addEventListener('touchmove', touchmoveHandler, false);
+    });
+    </script>
 
 </body>
 

@@ -256,18 +256,23 @@ h2 {
 	  		0 2px 4px rgba(0,0,0, 0.12),
 	    	0 2px 4px rgba(0,0,0, 0.24);
 }
-	.share-icon:hover,
-	.share-icon:focus {
-		box-shadow: 
-	  		0 3px 6px rgba(0,0,0, 0.12),
-	    	0 3px 6px rgba(0,0,0, 0.24);
 
-	    -webkit-transform: scale(1.2);
-	    -moz-transform: scale(1.2);
-	    -ms-transform: scale(1.2);
-	    -o-transform: scale(1.2);
-	    transform: scale(1.2);
-	}
+.share-icon:hover,
+.share-icon:focus {
+	box-shadow: 
+  		0 3px 6px rgba(0,0,0, 0.12),
+    	0 3px 6px rgba(0,0,0, 0.24);
+
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.share-icon.fa{
+	font: normal normal normal 14px/3 FontAwesome;
+}
 
 .facebook {
 	background-color: #3b5998; 

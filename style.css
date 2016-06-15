@@ -76,14 +76,56 @@ h2 {
  * Card Styles
  */
 
+#main{
+	position:relative;
+	width:auto;
+	height:480px;
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 479px){ ... }
+
+@media only screen and (min-width: 480px) and (max-width: 767px){ ... }
+
+@media only screen and (min-width: 768px) and (max-width: 991px){ ... }
+
+@media only screen and (min-width: 992px) and (max-width: 1999px){ ... }
+
+@media only screen and (min-width: 480px){
+	#main{
+		position:relative;
+		width:375px;
+		height:480px;
+		left:50%;
+		margin-left:-195px;
+	}
+	#success .wrap img{
+		max-width: 75%;
+	}
+
+}
+@media only screen and (min-width: 768px){
+	#success .wrap img{
+		max-width: 35%;
+	}
+}
+
+
 .card {
 	background-color: #fff;
+	height: 480px;
 	margin-bottom: 1.6rem;
 	border-radius: 5px;
   	background: #fff;
+  	position: relative;
   	-webkit-box-shadow: 1px 3px 4px rgba(0,0,0,0.09);
   	box-shadow: 1px 3px 4px rgba(0,0,0,0.09);
 }
+
+/* last card */
+#main .tc-card:nth-of-type(1) .card{
+    height: 450px!important;
+} 
 
 .card__padding {
 	padding: 1.6rem;
@@ -91,7 +133,7 @@ h2 {
  
 .card__image {
 	min-height: 100px;
-	background-color: #eee;
+	background-color: #fff;
 }
 	.card__image img {
 		width: 100%;
@@ -117,9 +159,21 @@ h2 {
 	transition: all 0.5s ease;
 	font-size: 25px;
 }
-	.card__article a:hover {
-		color: #2980b9;
-	}
+
+.card__article a:hover {
+	color: #2980b9;
+}
+
+.card__article p{
+	font-size: 1.25em;
+	font-weight: 100;
+}
+
+.card__article p.author{
+	color: #999;
+    font-weight: 100;
+    font-size: 0.75em;
+}
 
 /* card action */
 .card__action {
@@ -127,6 +181,12 @@ h2 {
 	padding-right: 1.6rem;
 	padding-left: 1.6rem;
 	padding-bottom: 1.6rem;
+}
+
+.card__bottom{
+	width: 100%;
+	position: absolute;
+	bottom: 2px;
 }
 	 
 .card__author {}
@@ -144,8 +204,11 @@ h2 {
 
 .card__share {
 	float: right;
-	position: relative;
-	margin-top: -42px;
+    position: absolute;
+    /*position: relative;*/
+    /* margin-top: -42px; */
+    right: 5%;
+    bottom: 45%;
 }
 
 .card__social {
@@ -193,18 +256,23 @@ h2 {
 	  		0 2px 4px rgba(0,0,0, 0.12),
 	    	0 2px 4px rgba(0,0,0, 0.24);
 }
-	.share-icon:hover,
-	.share-icon:focus {
-		box-shadow: 
-	  		0 3px 6px rgba(0,0,0, 0.12),
-	    	0 3px 6px rgba(0,0,0, 0.24);
 
-	    -webkit-transform: scale(1.2);
-	    -moz-transform: scale(1.2);
-	    -ms-transform: scale(1.2);
-	    -o-transform: scale(1.2);
-	    transform: scale(1.2);
-	}
+.share-icon:hover,
+.share-icon:focus {
+	box-shadow: 
+  		0 3px 6px rgba(0,0,0, 0.12),
+    	0 3px 6px rgba(0,0,0, 0.24);
+
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.share-icon.fa{
+	font: normal normal normal 14px/3 FontAwesome;
+}
 
 .facebook {
 	background-color: #3b5998; 
@@ -312,20 +380,31 @@ h2 {
 	100% {opacity: 0; -moz-transform: scale(1);}
 }
 
-.fa{
+#top-bar .fa{
 	color:#fff;
+}
+
+.fa.black{
+	color:#333;
+}
+
+
+
+.teal{
+	color:#66CCCC;
 }
 
 .button {
   display: inline-block;
   position: relative;
-  width: 120px;
+  width: auto;
   height: 32px;
   line-height: 32px;
   border-radius: 2px;
   font-size: 0.9em;
   background-color: #fff;
-  color: #66CCCC;
+  color: #66CCCC!important;
+  padding: 0px 15px; 
 }
 
 .button > paper-ripple {
@@ -357,7 +436,24 @@ h2 {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
+.button.raised .fa{
+	color:#66CCCC;
+}
+
 .button.raised:active {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
   transition-delay: 0s;
+}
+
+.margin30{
+	margin-top:30%!important;
+}
+
+.margin10{
+	margin-top:10%!important;
+}
+
+.icon{
+	width: auto!important;
+	margin: 0 auto;
 }
